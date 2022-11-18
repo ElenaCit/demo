@@ -13,8 +13,18 @@ function handlekeyPress (ev) {
         player.setAttribute("fill", "green");
     } else if (ev.code === "ArrowRight") {
         dx = 1
-    } else if (ev.code === "ArrowLeftt") {
-        dx = -1}
+    } else if (ev.code === "ArrowLeft") {
+        dx = -1
+    }
+}
+
+function handlekeyRelease (ev) {
+    if (ev.code === "ArrowRight"){
+        dx = 0
+    } else if (ev.code === "ArrowLeft"){
+        dx =  0
+    }
+
 }
 
 function gameLoop(){ 
@@ -43,4 +53,5 @@ player.setAttribute("cx", posX + dx);
 gameLoop()
 
 window.onkeydown = handlekeyPress
+window.onkeyup = handlekeyRelease
 
