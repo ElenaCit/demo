@@ -1,4 +1,5 @@
 let dy = 0
+let dx = 0
 
 
 
@@ -10,10 +11,13 @@ function handlekeyPress (ev) {
         player.setAttribute("fill", "red");
     }else if (ev.key === "g"){
         player.setAttribute("fill", "green");
-    }
+    } else if (ev.code === "ArrowRight") {
+        dx = 1
+    } else if (ev.code === "ArrowLeftt") {
+        dx = -1}
 }
 
-function gameLoop(){
+function gameLoop(){ 
     // Update game status 
     dy = Math.min(dy + 0.05, 1)
 
@@ -22,11 +26,14 @@ function gameLoop(){
 const player = document.querySelector("#player");
 let posY = parseFloat (player.getAttribute ("cy"));
 let r = parseInt(player.getAttribute("r"))
-if (posY > 100 - r) {
+if (posY > 100 - r - dy) {
     dy = 0 
 }
 
 player.setAttribute("cy", posY + dy);
+
+let posX = parseFloat (player.getAttribute ("cx"));
+player.setAttribute("cx", posX + dx);
 
 
     //Loop forever
